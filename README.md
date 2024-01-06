@@ -52,4 +52,53 @@ This Java solution effectively merges two strings, word1 and word2, alternately 
 
 </details>
 
+### 1071. Greatest Common Divisor of Strings
+![Problem Screenshot](./src/Problem_Screenshots/screencapture-leetcode-problems-greatest-common-divisor-of-strings-description-2024-01-06-19_52_03.png)
 
+**Description:**
+For two strings s and t, we say "t divides s" if and only if s = t + ... + t (i.e., t is concatenated with itself one or more times).
+
+Given two strings str1 and str2, return the largest string x such that x divides both str1 and str2.
+
+<details>
+  <summary><b>Explanation (click to expand)</b></summary>
+This Java solution finds the largest string 'x' that divides both 'str1' and 'str2'. It checks if the concatenation of 'str1' and 'str2' is equal to the concatenation of 'str2' and 'str1'. If they're not equal, there's no common divisor, and it returns an empty string.
+
+If the concatenations match, the code calculates the GCD of the lengths of 'str1' and 'str2' using the Euclidean algorithm. The GCD represents the length of the largest common divisor string, which is obtained by extracting a substring from 'str1' of length 'gcdLength'.
+
+This method efficiently identifies the largest string that divides both 'str1' and 'str2' by utilizing the GCD of their lengths.
+
+</details>
+<details>
+  <summary><b>Solution in Java (click to expand)</b></summary>
+
+  ```java
+  import java.util.Scanner;
+
+public class Greatest_Common_Divisor_of_Strings_1071 {
+    public static String gcdOfStrings(String str1, String str2) {
+        if(!str1.concat(str2).equals(str2.concat(str1))){
+            return "";
+        }
+
+        int gcdLength = gcd(str1.length(), str2.length());
+
+        return str1.substring(0,gcdLength);
+    }
+
+    public static int gcd(int num1, int num2){
+        return num2 == 0 ? num1 : gcd(num2, num1 % num2);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String str1 = scanner.next();
+        String str2 = scanner.next();
+        String result = gcdOfStrings(str1, str2);
+        System.out.println(result);
+    }
+}
+
+```
+
+</details>
