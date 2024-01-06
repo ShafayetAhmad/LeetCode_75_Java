@@ -162,3 +162,58 @@ public class Kids_With_Greatest_Candies_1431 {
 ```
 
 </details>
+
+
+### 345. Reverse Vowels of a String
+
+![Problem Screenshot](./src/Problem_Screenshots/screencapture-leetcode-problems-reverse-vowels-of-a-string-description-2024-01-07-02_27_21.png)
+
+**Description:**
+Given a string s, reverse only all the vowels in the string and return it.
+
+The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
+
+<details>
+  <summary><b>Explanation (click to expand)</b></summary>
+This Java solution efficiently reverses the vowels in a given string 's'. It utilizes two pointers, 'start' and 'end', which traverse the string from both ends. The algorithm searches for vowels at the respective pointer positions using the 'vowels' string. When a vowel is found at both 'start' and 'end' positions, their positions are swapped within the StringBuilder 'result', effectively reversing the vowels in the string. This approach continues until the 'start' pointer surpasses the 'end' pointer, ensuring all vowels are reversed in place.
+
+The method efficiently identifies and swaps vowels within the string, resulting in the reversed vowel sequence in the returned string.
+
+</details>
+<details>
+  <summary><b>Solution in Java (click to expand)</b></summary>
+
+  ```java
+import java.util.Scanner;
+
+public class Reverse_Vowels_of_a_String_345 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String str = in.next();
+        System.out.println(reverseVowels(str));
+    }
+
+    public static String reverseVowels(String s) {
+        String vowels = "aeiouAEIOU";
+        StringBuilder result = new StringBuilder(s);
+        int start = 0, end = s.length()-1;
+        while(start <= end){
+            while(start < end && vowels.indexOf(s.charAt(start)) == -1){
+                start++;
+            }
+            while(end > start && vowels.indexOf(s.charAt(end)) == -1){
+                end--;
+            }
+            char temp = result.charAt(start);
+            result.setCharAt(start++, result.charAt(end));
+            result.setCharAt(end--, temp);
+        }
+
+        return result.toString();
+    }
+}
+
+
+```
+
+</details>
