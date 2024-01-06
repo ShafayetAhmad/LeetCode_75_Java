@@ -9,6 +9,11 @@ You are given two strings word1 and word2. Merge the strings by adding letters i
 Return the merged string.
 
 <details>
+  <summary><b>Explanation (click to expand)</b></summary>
+This Java solution effectively merges two strings, word1 and word2, alternately by iterating through both strings and appending characters to the result string until one of the strings is exhausted. The code maintains two pointers, 'i' and 'j', to track the current positions in each string while appending characters alternatively. It utilizes a StringBuilder, 'result', to efficiently construct the merged string. The loop continues until both strings are fully traversed, ensuring the characters are added in an alternating fashion.
+
+</details>
+<details>
   <summary><b>Solution in Java (click to expand)</b></summary>
 
   ```java
@@ -46,11 +51,5 @@ Return the merged string.
 ```
 
 </details>
-<details>
-  <summary><b>Explanation (click to expand)</b></summary>
-This Java solution effectively merges two strings, word1 and word2, alternately by iterating through both strings and appending characters to the result string until one of the strings is exhausted. The code maintains two pointers, 'i' and 'j', to track the current positions in each string while appending characters alternatively. It utilizes a StringBuilder, 'result', to efficiently construct the merged string. The loop continues until both strings are fully traversed, ensuring the characters are added in an alternating fashion.
-
-</details>
-
 
 
