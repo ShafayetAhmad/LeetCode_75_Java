@@ -102,3 +102,63 @@ public class Greatest_Common_Divisor_of_Strings_1071 {
 ```
 
 </details>
+
+### 1431. Kids With the Greatest Number of Candies
+
+![Problem Screenshot](./src/Problem_Screenshots/screencapture-leetcode-problems-kids-with-the-greatest-number-of-candies-description-2024-01-07-01_31_33.png)
+
+**Description:**
+There are n kids with candies. You are given an integer array candies, where each candies[i] represents the number of candies the ith kid has, and an integer extraCandies, denoting the number of extra candies that you have.
+
+Return a boolean array result of length n, where result[i] is true if, after giving the ith kid all the extraCandies, they will have the greatest number of candies among all the kids, or false otherwise.
+
+Note that multiple kids can have the greatest number of candies.
+
+<details>
+  <summary><b>Explanation (click to expand)</b></summary>
+ This Java solution determines if each child, after receiving 'extraCandies', would have the greatest number of candies among all the kids. It initially identifies the maximum number of candies present among the children. Then, it iterates through each child's candies, checking if adding 'extraCandies' to their current count would make them equal to or exceed the highest count. Based on this comparison, it populates a boolean array ('result'), where 'true' signifies a child having the potential greatest candies and 'false' otherwise.
+
+This approach efficiently identifies kids who, after receiving 'extraCandies', could have the maximum number of candies, providing a boolean array indicating their status.
+
+</details>
+<details>
+  <summary><b>Solution in Java (click to expand)</b></summary>
+
+  ```java
+import java.util.*;
+
+public class Kids_With_Greatest_Candies_1431 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int size = in.nextInt();
+        int[] arr = new int[size];
+        for(int i = 0; i < size; i++){
+            arr[i] = in.nextInt();
+        }
+        int candies = in.nextInt();
+        List<Boolean> ans = kidsWithCandies(arr, candies);
+
+        System.out.println(ans.toString());
+
+    }
+    public static List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        int highest = candies[0];
+        for (int i = 1; i < candies.length; i++) {
+            if(candies[i] > highest) highest = candies[i];
+        }
+        List<Boolean> result = new ArrayList<>();
+        for (int candy : candies) {
+            if (candy + extraCandies >= highest) {
+                result.add(true);
+            } else {
+                result.add(false);
+            }
+        }
+        return result;
+    }
+}
+
+
+```
+
+</details>
